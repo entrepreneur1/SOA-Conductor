@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://soa.local/#" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Test" targetNamespace="http://soa.local/#" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://soa.kacka.com.pl/#" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Test" targetNamespace="http://soa.kacka.com.pl/#" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
 
 
     <wsdl:message name="authorizeRequest">
@@ -163,8 +163,8 @@
     <wsdl:message name="reserveRequest1">
     	<wsdl:part name="doctorId" type="xsd:int"></wsdl:part>
     	<wsdl:part name="patientId" type="xsd:int"></wsdl:part>
-    	<wsdl:part name="dateFrom" type="xsd:dateTime"></wsdl:part>
-    	<wsdl:part name="dateTo" type="xsd:dateTime"></wsdl:part>
+    	<wsdl:part name="dateFrom" type="xsd:double"></wsdl:part>
+    	<wsdl:part name="dateTo" type="xsd:date"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="reserveResponse1">
     	<wsdl:part name="response" type="xsd:string"></wsdl:part>
@@ -323,95 +323,95 @@
   	<wsdl:operation name="getReservations">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getReservations" />
+  			soapAction="http://soa.kacka.com.pl/#getReservations" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getWorkingHours">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getWorkingHours" />
+  			soapAction="http://soa.kacka.com.pl/#getWorkingHours" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getReservationsByPatient">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getReservationsByPatient" />
+  			soapAction="http://soa.kacka.com.pl/#getReservationsByPatient" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="reserve">
 
   		<soap:operation
-  			soapAction="http://soa.local/#reserve" />
+  			soapAction="http://soa.kacka.com.pl/#reserve" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="cancelReservation">
 
   		<soap:operation
-  			soapAction="http://soa.local/#cancelReservation" />
+  			soapAction="http://soa.kacka.com.pl/#cancelReservation" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
@@ -423,70 +423,70 @@
   	<wsdl:operation name="getRatings">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getRatings" />
+  			soapAction="http://soa.kacka.com.pl/#getRatings" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getRating">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getRating" />
+  			soapAction="http://soa.kacka.com.pl/#getRating" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getAverageRating">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getAverageRating" />
+  			soapAction="http://soa.kacka.com.pl/#getAverageRating" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="rateDoctor">
 
   		<soap:operation
-  			soapAction="http://soa.local/#rateDoctor" />
+  			soapAction="http://soa.kacka.com.pl/#rateDoctor" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
@@ -499,36 +499,36 @@
   	<wsdl:operation name="authorizeByToken">
 
   		<soap:operation
-  			soapAction="http://soa.local/#authorizeByToken" />
+  			soapAction="http://soa.kacka.com.pl/#authorizeByToken" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="authorize">
 
   		<soap:operation
-  			soapAction="http://soa.local/#authorize" />
+  			soapAction="http://soa.kacka.com.pl/#authorize" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
@@ -540,257 +540,257 @@
   	<wsdl:operation name="getDoctor">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getDoctor" />
+  			soapAction="http://soa.kacka.com.pl/#getDoctor" />
   		<wsdl:input>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="findDoctors">
 
   		<soap:operation
-  			soapAction="http://soa.local/#findDoctors" />
+  			soapAction="http://soa.kacka.com.pl/#findDoctors" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="updateDoctorData">
 
   		<soap:operation
-  			soapAction="http://soa.local/#updateDoctorData" />
+  			soapAction="http://soa.kacka.com.pl/#updateDoctorData" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getDoctors">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getDoctors" />
+  			soapAction="http://soa.kacka.com.pl/#getDoctors" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getClinic">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getClinic" />
+  			soapAction="http://soa.kacka.com.pl/#getClinic" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="removeClinic">
 
   		<soap:operation
-  			soapAction="http://soa.local/#removeClinic" />
+  			soapAction="http://soa.kacka.com.pl/#removeClinic" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="findClinics">
 
   		<soap:operation
-  			soapAction="http://soa.local/#findClinics" />
+  			soapAction="http://soa.kacka.com.pl/#findClinics" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="updateClinicData">
 
   		<soap:operation
-  			soapAction="http://soa.local/#updateClinicData" />
+  			soapAction="http://soa.kacka.com.pl/#updateClinicData" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="removeDoctor">
 
   		<soap:operation
-  			soapAction="http://soa.local/#removeDoctor" />
+  			soapAction="http://soa.kacka.com.pl/#removeDoctor" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="addDoctor">
 
   		<soap:operation
-  			soapAction="http://soa.local/#addDoctor" />
+  			soapAction="http://soa.kacka.com.pl/#addDoctor" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="getPatient">
 
   		<soap:operation
-  			soapAction="http://soa.local/#getPatient" />
+  			soapAction="http://soa.kacka.com.pl/#getPatient" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="updatePatientData">
 
   		<soap:operation
-  			soapAction="http://soa.local/#updatePatientData" />
+  			soapAction="http://soa.kacka.com.pl/#updatePatientData" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="removePatient">
 
   		<soap:operation
-  			soapAction="http://soa.local/#removePatient" />
+  			soapAction="http://soa.kacka.com.pl/#removePatient" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="addClinic">
 
   		<soap:operation
-  			soapAction="http://soa.local/#addClinic" />
+  			soapAction="http://soa.kacka.com.pl/#addClinic" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
   	<wsdl:operation name="addPatient">
 
   		<soap:operation
-  			soapAction="http://soa.local/#addPatient" />
+  			soapAction="http://soa.kacka.com.pl/#addPatient" />
   		<wsdl:input>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:input>
   		<wsdl:output>
 
   			<soap:body use="encoded"
-  				namespace="http://soa.local/#"
+  				namespace="http://soa.kacka.com.pl/#"
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
@@ -798,17 +798,17 @@
 
   <wsdl:service name="ReservationService">
     <wsdl:port binding="tns:ReservationBinding" name="ReservationBindingService">
-	  <http:address location="http://soa.marcinbiernat.pl/soap/"/>
+      <http:address location="http://soa.kacka.com.pl/"/>
     </wsdl:port>
   </wsdl:service>
   <wsdl:service name="RatingService">
   	<wsdl:port binding="tns:RatingBinding" name="RatingBindingService" >
-  		<soap:address location="http://www.rating.pl" />
+  		<soap:address location="http://soa.kacka.com.pl/" />
   	</wsdl:port>
   </wsdl:service>
   <wsdl:service name="AuthorizationService">
   	<wsdl:port binding="tns:AuthorizationBinding" name="AutorizationBindingService">
-  		<soap:address location="http://www.autoryzacja.pl" />
+  		<soap:address location="http://soa.kacka.com.pl/" />
   	</wsdl:port>
   </wsdl:service>
   <wsdl:service name="DataService">

@@ -18,7 +18,11 @@ SOA::Application.routes.draw do
 
   resources :ratings
 
-  resources :clinics
+  resources :clinics do
+    member do
+      get 'doctors'
+    end
+  end
 
   resources :doctors do
     member do

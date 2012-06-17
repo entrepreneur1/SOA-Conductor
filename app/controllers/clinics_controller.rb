@@ -81,4 +81,12 @@ class ClinicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def doctors
+    @clinic = Clinic.find(params[:id])
+    @doctors = @clinic.doctors
+    respond_to do |format|
+      format.json { render json: @doctors }
+    end
+  end
 end
