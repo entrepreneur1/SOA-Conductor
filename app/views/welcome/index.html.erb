@@ -1,0 +1,20 @@
+<div id="specializations">
+    <h3>Specjalizacje</h3>
+    <ul>
+      <% @specializations.each do |spec| %>
+        <li><%=  link_to spec.name, spec  %></li>
+      <% end %>
+    </ul>
+</div>
+
+<div>
+  TODO:
+  <ul>
+    <li>Lekarze dostepni wg filtra</li>
+    <li>Ranking</li>
+    <li>Rejestracja online</li>
+    <li>System mailingowy (osobny serwis)</li>
+    <li>Mapa przychodni</li>
+    <li>CSS</li>
+  </ul>
+</div>

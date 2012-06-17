@@ -1,0 +1,86 @@
+<p>
+  <b>Name:</b>
+  <%= @doctor.name %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%= @doctor.surname %>
+</p>
+
+<p>
+  <b>Clinic:</b>
+  <%= @doctor.clinic_id %>
+</p>
+
+<p>
+  <b>Visit duration:</b>
+  <%= @doctor.visit_duration %>
+</p>
+
+<h2>Timetable</h2>
+<p>TODO: timetables edit and patients view for doctor, free places view and register for normal users</p>
+<div id="calendar"></div>
+
+<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
+<%= link_to 'Back', doctors_path %>
+<script type='text/javascript'>
+    var reservations = <%= @doctor.reservations.to_json(:methods => :title).html_safe %>;
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'agendaWeek,agendaDay'
+        },
+        defaultView: 'agendaWeek',
+        editable: false,
+        allDayDefault: false,
+        allDaySlot: false,
+        events: reservations,
+        eventSources: [{
+            url: '<%= working_hours_doctor_path(@doctor) %>',
+            color: 'green',
+            textColor: 'black'
+        }]
+    });
+</script>
+<h2>Ratings</h2>
+<% @doctor.ratings.each do |rating| %>
+    <div>
+      <span><%= "#{time_ago_in_words(rating.created_at)} ago, rate: #{rating.rate}" %></span>
+      <p>
+        <% rating.comment.split("\n").each do |line| %>
+            <%= line %><br/>
+        <% end %>
+      </p>
+    </div>
+<% end %>
+<%= "No ratings so far." if @doctor.ratings.empty? %>
+<div>
+  <%= form_for(@rating) do |f| %>
+      <% if @rating.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+            <ul>
+              <% @rating.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+      <% end %>
+
+      <%= f.hidden_field :doctor_id, :value => @doctor.id %>
+      <div class="field">
+        <%= f.label :rate %><br />
+        <%= f.select :rate, [1,2,3,4,5,6] %>
+      </div>
+      <div class="field">
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+</div>

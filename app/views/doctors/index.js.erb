@@ -1,0 +1,2 @@
+$("#doctors").html("<%= escape_javascript(render :partial => 'doctors', :locals => { :doctors => @doctors }, :layout => false) %>");
+window.history.replaceState('Object', '', '<%= request.url %>');

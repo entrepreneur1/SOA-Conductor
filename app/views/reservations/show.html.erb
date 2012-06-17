@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Patient:</b>
+  <%= @reservation.patient_id %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @reservation.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @reservation.end %>
+</p>
+
+<p>
+  <b>Doctor:</b>
+  <%= @reservation.doctor_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

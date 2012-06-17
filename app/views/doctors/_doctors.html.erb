@@ -1,0 +1,42 @@
+<% unless doctors.empty?
+     show_clinic = true unless local_assigns.has_key? :show_clinic
+%>
+    <table>
+      <tr>
+        <th><%= show_clinic ? sortable('name') : "Name" %></th>
+        <% if show_clinic %>
+            <th><%= sortable('clinic') %></th>
+            <th><%= sortable('city') %></th>
+        <% end %>
+        <th><%= show_clinic ?  sortable('specialization') : "Specialization" %></th>
+        <th><%= show_clinic ?   sortable('visit_duration') : "Visit duration" %></th>
+        <th><%= show_clinic ? sortable('rating') : "Rating" %></th>
+        <% if is_admin? %>
+            <th></th>
+            <th></th>
+            <th></th>
+        <% end %>
+      </tr>
+      <% doctors.each do |doctor| %>
+            <tr>
+              <td><%= link_to doctor.full_name, doctor %></td>
+              <% if show_clinic %>
+                  <% clinic = Clinic.find(doctor.clinic_id) rescue nil %>
+                  <td><%= clinic.nil? ? "-" : link_to("#{clinic.name}", clinic) %></td>
+                  <td><%= clinic.address.city unless clinic.nil? %></td>
+              <% end %>
+              <td><%= doctor.specialization.try('name') %></td>
+              <td><%= doctor.visit_duration %></td>
+              <td><%= "#{doctor.avg_rating} (#{doctor.ratings.count})" %></td>
+              <% if is_admin? %>
+                  <td><%= link_to 'Show', doctor %></td>
+                  <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
+                  <td><%= link_to 'Destroy', doctor, confirm: 'Are you sure?', method: :delete %></td>
+              <% end %>
+            </tr>
+        <% end %>
+        </table>
+    <%= will_paginate doctors if show_clinic %>
+<% else %>
+    Nothing found.
+<%end%>

@@ -1,0 +1,19 @@
+<%
+   grouped = doctors.sort_by(&:specialization_id).group_by(&:specialization_id)
+   grouped.each do |specialization_id, docs|
+%>
+    <div>
+   <h3 class="specialization_name"><%= link_to "#{Specialization.find(specialization_id).name} (#{docs.size})",nil %></h3>
+      <div>
+      <%= render :partial => 'doctors/doctors', :locals => { :doctors => docs, :show_clinic => false } %>
+      </div>
+    </div>
+<% end %>
+<script type="text/javascript">
+    $('.specialization_name + div').hide();
+    var names = $('.specialization_name');
+    names.on('click', function() {
+        $(this).next().toggle();
+        return false;
+    });
+</script>

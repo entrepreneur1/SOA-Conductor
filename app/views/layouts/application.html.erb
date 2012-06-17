@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SOA</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="user_nav" class="app_bar">
+  <% if current_user %>
+      Logged in as <%= current_user.email %><%= " (#{user_role})" %>.
+      <%= link_to "Log out", log_out_path %>
+  <% else %>
+      <%= link_to "New patient", sign_up_path %> or
+      <%= link_to "log in", log_in_path %>
+  <% end %>
+</div>
+<div id="portal_nav" class="app_bar">
+    <%= link_to "Specializations", root_path %>
+    <%= link_to "Przychodnie", clinics_path %>
+    <%= link_to "Lekarze", doctors_path %>
+    <% if logged_in? %>
+        <%=  link_to "My reservations", reservations_path %>
+    <% end %>
+</div>
+<% if is_admin? %>
+<div id="admin_nav" class="app_bar">
+
+</div>
+<% end %>
+
+
+<div id="content">
+  <% flash.each do |name, msg| %>
+      <div class="flash <%= name %>">
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      </div>
+  <% end %>
+<%= yield %>
+</div>
+
+</body>
+</html>

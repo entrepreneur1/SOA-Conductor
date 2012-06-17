@@ -1,0 +1,29 @@
+<%= form_for(@working_time) do |f| %>
+  <% if @working_time.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@working_time.errors.count, "error") %> prohibited this working_time from being saved:</h2>
+
+      <ul>
+      <% @working_time.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :doctor_id %><br />
+    <%= f.number_field :doctor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

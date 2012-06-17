@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @clinic.name %></h1>
+<div class="address">
+  <p class="city"><%= @address.city %></p>
+  <p><%= "#{@address.street} #{@address.number}" %></p>
+  <p><%= @address.postcode %></p>
+</div>
+
+<h2>Doctors:</h2>
+<%=  render :partial => 'doctors/doctors_by_spec', :locals => { :doctors => @clinic.doctors} %>
+
+<%= link_to 'Edit', edit_clinic_path(@clinic) %> |
+<%= link_to 'Back', clinics_path %>
+

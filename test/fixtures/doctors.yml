@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: Jan
+  surname: Nowak
+  clinic_id: 1
+  visit_duration: 1
+  specialization_id: 1
+

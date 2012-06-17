@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  doctor_id: 1
+  start: 2012-03-24 20:52:36
+  end: 2012-03-24 20:52:36
+
+two:
+  doctor_id: 1
+  start: 2012-03-24 20:52:36
+  end: 2012-03-24 20:52:36

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: Klinika w pcimiu
+  address_id: 1
+
+two:
+  id: 2
+  name: Druga klinika
+  address_id: 1

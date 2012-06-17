@@ -1,0 +1,31 @@
+<h1>Listing clinics</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Street</th>
+  </tr>
+
+<% @clinics.each do |clinic| %>
+  <tr>
+    <td><%= link_to clinic.name, clinic %></td>
+    <% 
+       address = clinic.address
+       if address
+    %>
+    <td><%= address.city %></td>
+    <td><%= address.street %></td>
+        <% else %>
+    <td>-</td>
+        <td>-</td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if is_admin? %>
+<%= link_to 'New Clinic', new_clinic_path %>
+<% end %>

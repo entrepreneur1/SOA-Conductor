@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @specialization.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @specialization.description %>
+</p>
+
+<div id="doctors">
+  Loading
+</div>
+<h3>Lekarze dostępni teraz:</h3>
+TODO
+
+<%= link_to 'Edit', edit_specialization_path(@specialization) %> |
+<%= link_to 'Back', specializations_path %>
+<script type="text/javascript">
+    $.getScript('/doctors?search%5Bspecialization%5D=<%= @specialization.id %>');
+    $(document).on('click','.pagination a', function() {
+        $.getScript(this.href);
+        return false;
+    });
+</script>

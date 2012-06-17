@@ -1,0 +1,86 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+alergolog:
+  id: 1
+  name: Alergolog
+  description: Alergolog
+
+chirurg:
+  id: 2
+  name: Chirurg
+  description: Chirurg
+
+dermatolog:
+  id: 3
+  name: Dermatolog
+  description: Dermatolog
+
+ginekolog:
+  id: 4
+  name: Ginekolog
+  description: Ginekolog
+
+internista:
+  id: 5
+  name: Internista
+  description: Internista
+
+kardiolog:
+  id: 6
+  name: Kardiolog
+  description: Kardiolog
+
+laryngolog:
+  id: 7
+  name: Laryngolog
+  description: Laryngolog
+
+pracy:
+  id: 8
+  name: Lekarz pracy
+  description: Lekarz pracy
+
+neurochirurg:
+  id: 9
+  name: Neurochirurg
+  description: Neurochirurg
+
+neurolog:
+  id: 10
+  name: Neurolog
+  description: Neurolog
+
+okulista:
+  id: 11
+  name: Okulista
+  description: Okulista
+
+ortopeda:
+  id: 12
+  name: Ortopeda
+  description: Ortopeda
+
+pediatra:
+  id: 13
+  name: Pediatra
+  description: Pediatra
+
+psychiatra:
+  id: 14
+  name: Psychiatra
+  description: Psychiatra
+
+stomatolog:
+  id: 15
+  name: Stomatolog
+  description: Stomatolog
+
+urolog:
+  id: 16
+  name: Urolog
+  description: Urolog
+
+inne:
+  id: 17
+  name: Inne specjalizacje
+  description: Inne

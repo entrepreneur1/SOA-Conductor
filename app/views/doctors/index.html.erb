@@ -1,0 +1,43 @@
+<h1>Doctors</h1>
+<%= form_tag '/doctors', :remote => true, :method => :get, :id => "search_form" do %>
+    <%= fields_for :search do |f| %>
+        <%= f.label :name, "Surname" %>
+        <%= f.text_field :name, :value => search_param(:name) %> <br />
+        <%= f.label :clinic %>
+        <%= f.text_field :clinic, :value => search_param(:clinic) %><br />
+        <%= f.label :city %>
+        <%= f.text_field :city, :value => search_param(:city) %><br />
+        Duration <%= f.label :min_duration, "from" %>
+        <%= f.number_field :min_duration, :value => search_param(:min_duration) %>
+        <%= f.label :max_duration, "to" %>
+        <%= f.number_field :max_duration, :value => search_param(:max_duration) %> <br />
+        <%= f.select :specialization, Specialization.all.collect{|p| [ p.name, p.id ] }, :include_blank => 'All', :selected  => search_param(:specialization)%><br/>
+
+        <%= f.hidden_field :direction, :value => search_param(:direction) %>
+        <%= f.hidden_field :sort, :value => search_param(:sort) %>
+        <%= f.submit "Search" %>
+    <%end %>
+<% end %>
+<div id="doctors">
+  <%= render :partial => 'doctors', :locals => { :doctors => @doctors }  %>
+</div>
+<br />
+<% if is_admin? %>
+    <%= link_to 'New Doctor', new_doctor_path %>
+<% end %>
+
+<script type="text/javascript">
+    $(document)
+            .on('click','.pagination a', function() {
+                $.getScript(this.href);
+                return false;
+            })
+            .on('click','.sort_link', function() {
+                var dir = $('#search_direction');
+                dir.val() == "ASC" ? dir.val('DESC') : dir.val('ASC');
+                $('#search_sort').val($(this).html());
+                $.get($("#search_form").attr("action"), $("#search_form").serialize(), null, "script");
+                return false;
+            });
+
+</script>

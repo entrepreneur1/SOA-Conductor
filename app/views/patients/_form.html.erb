@@ -1,0 +1,32 @@
+<%= form_for @user, :url => patients_path do |f| %>
+    <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <%= f.fields_for :patient do |patient_field| %>
+        <p>
+          <%= patient_field.label :name %><br />
+          <%= patient_field.text_field :name %>
+        </p>
+        <% end %>
+    <p class="button"><%= f.submit %></p>
+<% end %>
+
