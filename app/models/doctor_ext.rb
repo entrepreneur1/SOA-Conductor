@@ -1,6 +1,6 @@
 class DoctorExt
-  def self.find(id)
-    response = WSDLClient.request 'getDoctor', body: {:doctorId => id }
-    ActiveSupport::JSON.decode response.body.first[1].first[1]
-  end
+  include SoapModel
+  attributes :id, :name, :surname, :clinic_id, :visit_duration, :created_at, :updated_at, :specialization_id
+  crud :doctor
+
 end
