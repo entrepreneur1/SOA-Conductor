@@ -1,0 +1,1 @@
+WSDLClient = Savon::Client.new(Rails.root.join('config','wsdl','soa.wsdl').to_s)

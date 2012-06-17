@@ -49,3 +49,4 @@ end
 gem "factory_girl_rails", "~> 2.0"
 gem 'faker'
 gem 'will_paginate', '~> 3.0'
+gem 'savon'
