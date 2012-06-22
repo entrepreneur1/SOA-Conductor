@@ -26,6 +26,10 @@ module SoapModel
         new(SoapBase.send "get#{model_name}", "#{model_name.downcase}Id" => id)
       end unless excepts.include?(:get)
 
+      define_singleton_method "all" do
+        SoapBase.send "get#{model_name.pluralize}"
+      end unless excepts.include?(:remove)
+
       define_singleton_method "update" do
         new(SoapBase.send "update#{model_name}", soap_json)
       end unless excepts.include?(:update)
