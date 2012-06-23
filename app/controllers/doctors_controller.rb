@@ -104,7 +104,7 @@ class DoctorsController < ApplicationController
       .to_a
       .map { |date| ReservationExt.reservations(params[:id].to_i, date.to_date  )}
       .reject {|date| date.nil?}
-    render json: times
+    render json: times.flatten
   end
 
   private
