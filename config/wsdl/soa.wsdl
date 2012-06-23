@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://soa.kacka.com.pl/#" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Test" targetNamespace="http://soa.kacka.com.pl/#" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
 
 
@@ -108,6 +108,37 @@
     <wsdl:message name="addPatientResponse">
     	<wsdl:part name="response" type="xsd:string"></wsdl:part>
     </wsdl:message>
+    <wsdl:message name="addAddressRequest">
+    	<wsdl:part name="data" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="addAddressResponse">
+    	<wsdl:part name="response" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getAddressRequest">
+    	<wsdl:part name="data" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getAddressResponse">
+    	<wsdl:part name="response" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeAddressRequest">
+    	<wsdl:part name="addressId" type="xsd:int"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="removeAddressResponse">
+    	<wsdl:part name="response" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateAddressRequest">
+    	<wsdl:part name="addressId" type="xsd:int"></wsdl:part>
+    	<wsdl:part name="data" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="updateAddressResponse">
+    	<wsdl:part name="response" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSpecializationsRequest">
+        <wsdl:part name="data" type="xsd:string"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getSpecializationsResponse">
+    	<wsdl:part name="response" type="xsd:string"></wsdl:part>
+    </wsdl:message>
     <wsdl:message name="getRatingsRequest">
     	<wsdl:part name="doctorId" type="xsd:int"></wsdl:part>
     </wsdl:message>
@@ -163,8 +194,8 @@
     <wsdl:message name="reserveRequest1">
     	<wsdl:part name="doctorId" type="xsd:int"></wsdl:part>
     	<wsdl:part name="patientId" type="xsd:int"></wsdl:part>
-    	<wsdl:part name="dateFrom" type="xsd:double"></wsdl:part>
-    	<wsdl:part name="dateTo" type="xsd:date"></wsdl:part>
+    	<wsdl:part name="dateFrom" type="xsd:dateTime"></wsdl:part>
+    	<wsdl:part name="dateTo" type="xsd:dateTime"></wsdl:part>
     </wsdl:message>
     <wsdl:message name="reserveResponse1">
     	<wsdl:part name="response" type="xsd:string"></wsdl:part>
@@ -314,6 +345,32 @@
   		<wsdl:input message="tns:addPatientRequest"></wsdl:input>
   		<wsdl:output message="tns:addPatientResponse"></wsdl:output>
   	</wsdl:operation>
+   	<wsdl:operation name="addAddress">
+  		<wsdl:documentation>Dodanie nowego adresu</wsdl:documentation>
+  		<wsdl:input message="tns:addAddressRequest"></wsdl:input>
+  		<wsdl:output message="tns:addAddressResponse"></wsdl:output>
+  	</wsdl:operation>
+   	<wsdl:operation name="getAddress">
+  		<wsdl:documentation>Pobranie adresu</wsdl:documentation>
+  		<wsdl:input message="tns:getAddressRequest"></wsdl:input>
+  		<wsdl:output message="tns:getAddressResponse"></wsdl:output>
+  	</wsdl:operation>
+   	<wsdl:operation name="removeAddress">
+  		<wsdl:documentation>Usunięcie adresu</wsdl:documentation>
+  		<wsdl:input message="tns:removeAddressRequest"></wsdl:input>
+  		<wsdl:output message="tns:removeAddressResponse"></wsdl:output>
+  	</wsdl:operation>
+   	<wsdl:operation name="updateAddress">
+  		<wsdl:documentation>Zmiana adresu</wsdl:documentation>
+  		<wsdl:input message="tns:updateAddressRequest"></wsdl:input>
+  		<wsdl:output message="tns:updateAddressResponse"></wsdl:output>
+  	</wsdl:operation>
+   	<wsdl:operation name="getSpecializations">
+  		<wsdl:documentation>Pobranie specjalizacji</wsdl:documentation>
+  		<wsdl:input message="tns:getSpecializationsRequest"></wsdl:input>
+  		<wsdl:output message="tns:getSpecializationsResponse"></wsdl:output>
+  	</wsdl:operation>
+
   </wsdl:portType>
   <wsdl:binding name="ReservationBinding" type="tns:ReservationType">
 
@@ -692,6 +749,98 @@
   				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
   		</wsdl:output>
   	</wsdl:operation>
+
+  	<wsdl:operation name="addAddress">
+
+  		<soap:operation
+  			soapAction="http://soa.kacka.com.pl/#addAddress" />
+  		<wsdl:input>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+
+    <wsdl:operation name="getAddress">
+
+  		<soap:operation
+  			soapAction="http://soa.kacka.com.pl/#getAddress" />
+  		<wsdl:input>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+
+    <wsdl:operation name="removeAddress">
+
+  		<soap:operation
+  			soapAction="http://soa.kacka.com.pl/#removeAddress" />
+  		<wsdl:input>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+
+    <wsdl:operation name="updateAddress">
+
+  		<soap:operation
+  			soapAction="http://soa.kacka.com.pl/#updateAddress" />
+  		<wsdl:input>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+
+    <wsdl:operation name="getSpecializations">
+
+  		<soap:operation
+  			soapAction="http://soa.kacka.com.pl/#getSpecializations" />
+  		<wsdl:input>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="encoded"
+  				namespace="http://soa.kacka.com.pl/#"
+  				encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+  		</wsdl:output>
+  	</wsdl:operation>
+
+
   	<wsdl:operation name="addDoctor">
 
   		<soap:operation
@@ -798,17 +947,17 @@
 
   <wsdl:service name="ReservationService">
     <wsdl:port binding="tns:ReservationBinding" name="ReservationBindingService">
-      <http:address location="http://soa.kacka.com.pl/"/>
+	  <soap:address location="http://soa.marcinbiernat.pl/soap/"/>
     </wsdl:port>
   </wsdl:service>
   <wsdl:service name="RatingService">
   	<wsdl:port binding="tns:RatingBinding" name="RatingBindingService" >
-  		<soap:address location="http://soa.kacka.com.pl/" />
+  		<soap:address location="http://www.rating.pl" />
   	</wsdl:port>
   </wsdl:service>
   <wsdl:service name="AuthorizationService">
   	<wsdl:port binding="tns:AuthorizationBinding" name="AutorizationBindingService">
-  		<soap:address location="http://soa.kacka.com.pl/" />
+  		<soap:address location="http://www.autoryzacja.pl" />
   	</wsdl:port>
   </wsdl:service>
   <wsdl:service name="DataService">

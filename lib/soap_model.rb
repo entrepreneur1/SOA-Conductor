@@ -5,12 +5,21 @@ module SoapModel
 
   ATTRIBUTES = []
 
+
+
+
   def initialize(json=nil)
     p json
     from_json(json) if json
   end
 
   module ClassMethods
+    def soap_base
+      @soap_base
+    end
+
+    delegate :make_request, :to => :soap_base
+
     def attributes(*args)
       ATTRIBUTES.concat(args.map(&:to_s))
       args.each do |attr|
@@ -23,24 +32,24 @@ module SoapModel
       excepts = options[:except].map(&:to_sym) if options[:except]
       excepts ||= []
       define_singleton_method "find" do |id|
-        new(SoapBase.send "get#{model_name}", "#{model_name.downcase}Id" => id)
+        new(@soap_base.send "get#{model_name}", "#{model_name.downcase}Id" => id)
       end unless excepts.include?(:get)
 
       define_singleton_method "all" do
-        SoapBase.send "get#{model_name.pluralize}"
+        @soap_base.send "get#{model_name.pluralize}"
       end unless excepts.include?(:remove)
 
       define_singleton_method "update" do
-        new(SoapBase.send "update#{model_name}", soap_json)
+        new(@soap_base.send "update#{model_name}", soap_json)
       end unless excepts.include?(:update)
 
       define_singleton_method "create" do |options|
-        new(SoapBase.send "add#{model_name}", options)
+        new(@soap_base.send "add#{model_name}", options)
       end unless excepts.include?(:create)
 
       define_singleton_method "delete" do |options|
         id = (options if options.is_a?(Integer)) or (options[:id] or options['id'] if options.is_a(Hash))
-        SoapBase.send "remove#{model_name}", "#{model_name.downcase}Id" => id
+        @soap_base.send "remove#{model_name}", "#{model_name.downcase}Id" => id
       end unless excepts.include?(:remove)
     end
   end
