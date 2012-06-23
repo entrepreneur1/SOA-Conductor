@@ -19,15 +19,15 @@
       </tr>
       <% doctors.each do |doctor| %>
             <tr>
-              <td><%= link_to doctor.full_name, doctor %></td>
+              <td><%= link_to doctor.full_name, doctor_path(doctor.id) %></td>
               <% if show_clinic %>
-                  <% clinic = Clinic.find(doctor.clinic_id) rescue nil %>
-                  <td><%= clinic.nil? ? "-" : link_to("#{clinic.name}", clinic) %></td>
-                  <td><%= clinic.address.city unless clinic.nil? %></td>
+                  <% clinic = doctor.clinic rescue nil %>
+                  <td><%= clinic.name %></td>
+                  <td><%#= clinic.address.city unless clinic.nil? %></td>
               <% end %>
-              <td><%= doctor.specialization.try('name') %></td>
+              <td><%#= doctor.specialization.try('name') %></td>
               <td><%= doctor.visit_duration %></td>
-              <td><%= "#{doctor.avg_rating} (#{doctor.ratings.count})" %></td>
+              <td><%#= "#{doctor.avg_rating} (#{doctor.ratings.count})" %></td>
               <% if is_admin? %>
                   <td><%= link_to 'Show', doctor %></td>
                   <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
@@ -36,7 +36,7 @@
             </tr>
         <% end %>
         </table>
-    <%= will_paginate doctors if show_clinic %>
+    <%= will_paginate @pagination if show_clinic %>
 <% else %>
     Nothing found.
 <%end%>

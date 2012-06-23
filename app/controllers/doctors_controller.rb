@@ -4,7 +4,12 @@ class DoctorsController < ApplicationController
   # GET /doctors
   # GET /doctors.json
   def index
-    @doctors = Doctor.search(params[:search]).paginate(:per_page => 20, :page => params[:page])
+    page = params[:page] ? params[:page].to_i : 1
+    query = extract_search_params
+    paginated_query = query.merge(:limit => 20, :offset => (page-1)*20)
+    @doctors = DoctorExt.addClinics(DoctorExt.all(paginated_query))
+    total_count = DoctorExt.count(query)
+    @pagination = WillPaginate::Collection.create(page || 1, 20, total_count) {}
     respond_to do |format|
       format.html # show.html.erb
       format.js
@@ -15,9 +20,7 @@ class DoctorsController < ApplicationController
   # GET /doctors/1
   # GET /doctors/1.json
   def show
-    @doctor = Doctor.find(params[:id])
-    @rating = Rating.new
-
+    @doctor = DoctorExt.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @doctor }
@@ -85,15 +88,32 @@ class DoctorsController < ApplicationController
   end
 
   def working_hours
-    @doctor = Doctor.find(params[:id])
     start_time = Time.at(params[:start].to_i)
     end_time = Time.at(params[:end].to_i)
     times = ((start_time.to_date)..(end_time.to_date))
       .to_a
-      .map { |date| @doctor.working_hours_at(date) }
+      .map { |date| WorkingTimeExt.workingHours(params[:id].to_i, date.to_date  )}
       .reject {|date| date.nil?}
-      .to_json(:methods => :title)
-      .html_safe
     render json: times
+  end
+
+  def reservations
+    start_time = Time.at(params[:start].to_i)
+    end_time = Time.at(params[:end].to_i)
+    times = ((start_time.to_date)..(end_time.to_date))
+      .to_a
+      .map { |date| ReservationExt.reservations(params[:id].to_i, date.to_date  )}
+      .reject {|date| date.nil?}
+    render json: times
+  end
+
+  private
+  def extract_search_params
+    query = {}
+    return query unless search = params[:search]
+    ["surname", "clinic_name", "city", "visit_duration_to", "visit_duration_from", "specialization_id"].each do |param_name|
+      query[param_name] = search[param_name] if search[param_name]
+    end
+    query
   end
 end

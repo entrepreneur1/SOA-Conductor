@@ -27,6 +27,7 @@ SOA::Application.routes.draw do
   resources :doctors do
     member do
       get 'working_hours'
+      get 'reservations'
     end
   end
 

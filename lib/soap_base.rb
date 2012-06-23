@@ -6,8 +6,7 @@ class SoapBase
   end
 
     def method_missing(method, *args, &block)
-      body = args.last.is_a?(Hash) ? args.last : []
-      p body
+      body = args.last
       make_request method, body
     end
 

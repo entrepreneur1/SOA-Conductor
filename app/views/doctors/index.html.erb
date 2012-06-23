@@ -1,17 +1,17 @@
 <h1>Doctors</h1>
 <%= form_tag '/doctors', :remote => true, :method => :get, :id => "search_form" do %>
     <%= fields_for :search do |f| %>
-        <%= f.label :name, "Surname" %>
-        <%= f.text_field :name, :value => search_param(:name) %> <br />
-        <%= f.label :clinic %>
-        <%= f.text_field :clinic, :value => search_param(:clinic) %><br />
-        <%= f.label :city %>
-        <%= f.text_field :city, :value => search_param(:city) %><br />
-        Duration <%= f.label :min_duration, "from" %>
-        <%= f.number_field :min_duration, :value => search_param(:min_duration) %>
-        <%= f.label :max_duration, "to" %>
-        <%= f.number_field :max_duration, :value => search_param(:max_duration) %> <br />
-        <%= f.select :specialization, Specialization.all.collect{|p| [ p.name, p.id ] }, :include_blank => 'All', :selected  => search_param(:specialization)%><br/>
+        <%= f.label :surname, "Surname" %>
+        <%= f.text_field :surname, :value => search_param(:surname) %> <br />
+        <%= f.label :clinic_name %>
+        <%= f.text_field :clinic_name, :value => search_param(:clinic_name) %><br />
+        <%= f.label :city_name %>
+        <%= f.text_field :city_name, :value => search_param(:city_name) %><br />
+        Duration <%= f.label :visit_duration_from, "from" %>
+        <%= f.number_field :visit_duration_from, :value => search_param(:visit_duration_from) %>
+        <%= f.label :visit_duration_to, "to" %>
+        <%= f.number_field :visit_duration_to, :value => search_param(:visit_duration_to) %> <br />
+        <%= f.select :specialization_id, Specialization.all.collect{|p| [ p.name, p.id ] }, :include_blank => 'All', :selected  => search_param(:specialization_id)%><br/>
 
         <%= f.hidden_field :direction, :value => search_param(:direction) %>
         <%= f.hidden_field :sort, :value => search_param(:sort) %>

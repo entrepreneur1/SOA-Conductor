@@ -2,7 +2,7 @@
     <h3>Specjalizacje</h3>
     <ul>
       <% @specializations.each do |spec| %>
-        <li><%=  link_to spec.name, spec  %></li>
+        <li><%=  link_to spec.name, specialization_path(spec.id)  %></li>
       <% end %>
     </ul>
 </div>
