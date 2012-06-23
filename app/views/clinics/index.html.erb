@@ -9,7 +9,7 @@
 
 <% @clinics.each do |clinic| %>
   <tr>
-    <td><%= link_to clinic.name, clinic %></td>
+    <td><%= link_to clinic.name, clinic_path(clinic.id) %></td>
     <% 
        address = clinic.address
        if address

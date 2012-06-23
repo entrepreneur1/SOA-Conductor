@@ -8,8 +8,8 @@
 </div>
 
 <h2>Doctors:</h2>
-<%=  render :partial => 'doctors/doctors_by_spec', :locals => { :doctors => @clinic.doctors} %>
+<%=  render :partial => 'doctors/doctors_by_spec', :locals => { :doctors => @doctors} %>
 
-<%= link_to 'Edit', edit_clinic_path(@clinic) %> |
+<%= link_to 'Edit', edit_clinic_path(@clinic.id) %> |
 <%= link_to 'Back', clinics_path %>
 

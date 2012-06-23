@@ -34,8 +34,6 @@ class DoctorExt
       query = ""
     end
     @soap_base.findDoctors(query).map { |x|
-      p "JSONIK"
-      p x
       doc = new(x)
       doc.specialization_name = x["specialization_name"]
       doc

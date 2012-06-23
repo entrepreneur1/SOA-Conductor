@@ -9,12 +9,14 @@ class ClinicExt
 
   def initialize(json=nil)
     from_json(json) if json
-    p "SUPER JSONIK"
-    p json
-    json_clinic = json["address"]
-    json_clinic["id"]=json["address_id"]
-    self.address = AddressExt.new(json_clinic)
-    p "ADRES:"
-    p address
+    if json["address"]
+      json_clinic = json["address"]
+      json_clinic["id"]=json["address_id"]
+      self.address = AddressExt.new(json_clinic)
+    end
+  end
+
+  def self.all
+    @soap_base.findClinics.map{|x| new(x)}
   end
 end

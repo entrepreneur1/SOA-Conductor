@@ -2,7 +2,7 @@ class ClinicsController < ApplicationController
   # GET /clinics
   # GET /clinics.json
   def index
-    @clinics = Clinic.all
+    @clinics = ClinicExt.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,8 @@ class ClinicsController < ApplicationController
   # GET /clinics/1
   # GET /clinics/1.json
   def show
-    @clinic = Clinic.find(params[:id])
+    @clinic = ClinicExt.find(params[:id])
+    @doctors = DoctorExt.all :clinic_id => params[:id]
     @address = @clinic.address
 
     respond_to do |format|
