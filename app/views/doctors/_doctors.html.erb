@@ -23,9 +23,9 @@
               <% if show_clinic %>
                   <% clinic = doctor.clinic rescue nil %>
                   <td><%= clinic.name %></td>
-                  <td><%#= clinic.address.city unless clinic.nil? %></td>
+                  <td><%= clinic.address.city unless clinic.nil? %></td>
               <% end %>
-              <td><%#= doctor.specialization.try('name') %></td>
+              <td><%= doctor.specialization_name rescue "" %></td>
               <td><%= doctor.visit_duration %></td>
               <td><%#= "#{doctor.avg_rating} (#{doctor.ratings.count})" %></td>
               <% if is_admin? %>

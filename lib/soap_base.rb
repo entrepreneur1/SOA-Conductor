@@ -1,8 +1,13 @@
 class SoapBase
 
-  def initialize(endpoint)
-    @client = Savon::Client.new(Rails.root.join('config','wsdl','soa.wsdl').to_s)
-    @client.wsdl.endpoint = URI(endpoint)
+  def initialize(endpoint,wsdl = nil)
+    wsdl ||= Rails.root.join('config','wsdl','soa.wsdl').to_s
+    @client = Savon::Client.new(wsdl)
+    @client.wsdl.endpoint = URI(endpoint) if endpoint
+  end
+
+  def client
+    @client
   end
 
     def method_missing(method, *args, &block)

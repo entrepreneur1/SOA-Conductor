@@ -5,11 +5,7 @@ module SoapModel
 
   ATTRIBUTES = []
 
-
-
-
   def initialize(json=nil)
-    p json
     from_json(json) if json
   end
 
@@ -56,7 +52,7 @@ module SoapModel
 
   def from_json(json)
     ATTRIBUTES.each do |attr|
-      if value = json[attr]
+      if respond_to?("#{attr}") && (value = json[attr])
         send "#{attr}=", value
       end
     end

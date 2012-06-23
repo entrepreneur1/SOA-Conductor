@@ -12,7 +12,6 @@ class Doctor < ActiveRecord::Base
     "#{name} #{surname}"
   end
 
-
   def city
     clinic.address.city rescue nil
   end

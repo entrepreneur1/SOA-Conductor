@@ -8,6 +8,8 @@ class DoctorExt
 
   attr_accessor :clinic
 
+  attr_accessor :specialization_name
+
   def self.addClinics(doctors)
     clinics = doctors.map(&:clinic_id).uniq.inject({}) { |hash, clinic_id|
       hash[clinic_id] = ClinicExt.find(clinic_id.to_i)
@@ -17,7 +19,6 @@ class DoctorExt
       doctor.clinic = clinics[doctor.clinic_id]
     end
     doctors
-
   end
 
   def full_name
@@ -25,7 +26,6 @@ class DoctorExt
   end
 
   def self.all(query = nil)
-
     if query
       builder = Builder::XmlMarkup.new
       xml = builder.query(query.to_json.to_s)
@@ -33,10 +33,14 @@ class DoctorExt
     else
       query = ""
     end
-
-    @soap_base.findDoctors(query).map { |x| new(x) }
+    @soap_base.findDoctors(query).map { |x|
+      p "JSONIK"
+      p x
+      doc = new(x)
+      doc.specialization_name = x["specialization_name"]
+      doc
+    }
   end
-
 
   def self.count(query = {})
     query["count"] = true
@@ -45,7 +49,5 @@ class DoctorExt
     query = xml.to_s
     @soap_base.findDoctors(query).first["count"].to_i
   end
-
-
 
 end

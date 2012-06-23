@@ -112,8 +112,9 @@ class DoctorsController < ApplicationController
     query = {}
     return query unless search = params[:search]
     ["surname", "clinic_name", "city", "visit_duration_to", "visit_duration_from", "specialization_id"].each do |param_name|
-      query[param_name] = search[param_name] if search[param_name]
+      query[param_name] = search[param_name] if search[param_name] && !search[param_name].blank?
     end
+
     query
   end
 end
